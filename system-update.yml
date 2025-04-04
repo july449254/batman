@@ -2,11 +2,11 @@
   hosts: linuxservers
   tasks:
     - name: Update package list
-      sudo apt:
+      apt:
         update_cache: yes
 
     - name: Upgrade all packages
-      sudo apt:
+      apt:
         upgrade: dist
     
     
