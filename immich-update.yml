@@ -1,10 +1,13 @@
 ---
 - name: Update Immich Docker
   host: 10.10.1.108
+  gather_facts: false
+  module_defaults:
+     group/community.docker.docker:
 
   tasks:
     - name: Shutdown Docker
-      docker compose down: 
+      docker compose down:
 
     - name: Pull docker
       docker compose pull:
