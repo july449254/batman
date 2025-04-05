@@ -1,5 +1,5 @@
 - name: Update and Upgrade Linux Servers
-  hosts: linuxserver
+  hosts: pve
   tasks:
     - name: Update package list
       apt:
