@@ -3,12 +3,12 @@
   host: 10.10.1.108
 
   tasks:
-- name: Shutdown Docker
-  docker compose down 
+    - name: Shutdown Docker
+      docker compose down 
 
-- name: Pull docker
-  docker compose pull
+    - name: Pull docker
+      docker compose pull
 
-- name: Start Docker
-  docker compose up -d
-  
+    - name: Start Docker
+      docker compose up -d
+
