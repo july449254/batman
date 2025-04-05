@@ -1,0 +1,14 @@
+---
+- name: Update Immich Docker
+  host: 10.10.1.108
+
+  tasks:
+- name: Shutdown Docker
+  docker compose down 
+
+- name: Pull docker
+  docker compose pull
+
+- name: Start Docker
+  docker compose up -d
+  
