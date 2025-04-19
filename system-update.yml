@@ -1,5 +1,5 @@
 - name: Update and Upgrade Linux Servers
-  hosts: pve
+  hosts: linuxbox
   tasks:
     - name: Update package list
       apt:
