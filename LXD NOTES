@@ -1,0 +1,35 @@
+LXD NOTES
+
+sudo lxd init - to initialize lxd
+lxc remote list - to list the remote server to pull images
+lxc image list images: - to list the available images on the remote repo called images
+lxc list - to list available running containers
+lxc launch images:{name of the remote image}
+lxc exec {container_name} - to launch into the container
+lxc info - to view information of the container
+lxc config set {container_name} boot.autostart 1 - to start the container automatically upon boot up
+lxc config set {container_name} limits.memory [set value limits] - to limit memory ussage of the container
+lxc config show {container_name} - to show container configuration
+lxc config set {container_name} boot.autostart.delay 30 - to delay container startup
+lxc config set {container_name} boot.autostart.order [arbitrary#] - startup order
+lxc launch --vm --config security.secureboot=false images:{imagerepo} (vm name instance) - dissable secure boot
+
+Managing Storage in LXD
+
+lxc storage create <pool> <driver> source=path - create a new storage pool
+lxc launch --storage=<poolName> --vm - to launch vm in a customize storage pool
+lxc launch --vm --device root,size=25Gib images:ubuntu/23.04 u01 - to specify root size
+lxc config show --expanded <vmName>
+lxc storage volume create --type=block <pool> <volumeName> size=3GiB - Hot-plugging LXD VM Data Disks
+lxc storage volume attach <pool> <volumeName> <vmName>
+lxc storage volume delete <pool> <volumeName>
+
+Resource Management
+
+lxc --config limits.cpu=4
+lxc --config limits.memory=8GiB
+
+Network Management
+lxc network forward create lxcbr0 {hostip} - to create a forwarding rule
+lxc network port add lxcbrd0 {host ip} tcp {targe port} {vm ip} {listening port}
+lxc network forward create lxbdr0 10.0.0.179 target_address=10.110.115.175 - create a forwarding rules
